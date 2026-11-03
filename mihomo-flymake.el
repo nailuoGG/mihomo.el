@@ -4,7 +4,7 @@
 ;; Author: Liu Jiale
 ;; Keywords: tools
 ;; Package-Requires: ((emacs "29.1"))
-;; Version: 0.1.0
+;; Version: 0.2.0
 
 ;;; Commentary:
 ;; Validate a Mihomo configuration with `mihomo -t'.

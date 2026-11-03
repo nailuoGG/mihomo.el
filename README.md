@@ -2,20 +2,21 @@
 
 `mihomo.el` provides Emacs editing support for [Mihomo](https://github.com/MetaCubeX/mihomo) configuration files.
 
-Version 0.1 includes:
+Version 0.2 includes:
 
 - YAML editing through `yaml-mode`;
-- highlighting for Mihomo rule, proxy, and proxy-group types;
-- completion for common configuration keys;
-- built-in configuration snippets;
-- asynchronous Flymake validation through `mihomo -t`.
-
-Controller and dashboard features are planned for later releases.
+- highlighting, key completion, and built-in configuration snippets;
+- asynchronous Flymake validation through `mihomo -t`;
+- an asynchronous external-controller API client with auth-source support;
+- a transient controller menu;
+- proxy group selection and delay tests;
+- active connection inspection and closing.
 
 ## Requirements
 
 - Emacs 29.1 or newer;
 - `yaml-mode` 0.0.16 or newer;
+- `transient` 0.8.0 or newer;
 - Mihomo in `PATH`, or an explicit `mihomo-executable`, for validation.
 
 Editing and completion continue to work when Mihomo is unavailable.
@@ -57,6 +58,44 @@ M-x mihomo-config-insert-snippet
 ```
 
 The initial snippets cover common rules, Shadowsocks proxies, select/url-test groups, and HTTP rule providers.
+
+## Controller
+
+Set the controller URL, then run `M-x mihomo`:
+
+```elisp
+(setq mihomo-controller-url "http://127.0.0.1:9090"
+      mihomo-config-file "~/.config/mihomo/config.yaml")
+```
+
+The transient menu provides status, mode changes, configuration reload, proxy
+groups, and active connections. Controller requests are asynchronous.
+
+Store the controller secret in auth-source using the controller host and port
+with the user `mihomo`. For example, the equivalent `~/.authinfo.gpg` entry is:
+
+```text
+machine 127.0.0.1 port 9090 login mihomo password YOUR_SECRET
+```
+
+Do not put the secret in Emacs configuration or customize variables.
+
+### Proxy groups
+
+`M-x mihomo-proxies` opens the proxy group table:
+
+- `RET` or `s`: select a node in the group at point;
+- `d`: test the group at point;
+- `D`: choose any proxy or group to test;
+- `g`: refresh.
+
+### Connections
+
+`M-x mihomo-connections` opens the active connection table:
+
+- `k`: close the connection at point;
+- `K`: confirm and close all connections;
+- `g`: refresh.
 
 ## Validation
 
@@ -108,7 +147,9 @@ Load the package and test file in Emacs, then run the tests matching `^mihomo-`:
 
 ## Scope
 
-Version 0.1 does not install or launch Mihomo, manage system proxy settings, download subscriptions, or connect to the external-controller API.
+Version 0.2 does not install or launch Mihomo, manage system proxy settings,
+download subscriptions, stream logs or traffic, manage providers, or display
+rules.
 
 ## License
 
