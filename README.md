@@ -1,6 +1,6 @@
 # mihomo.el
 
-`mihomo.el` provides Emacs editing support for [Mihomo](https://github.com/MetaCubeX/mihomo/tree/Meta) configuration files.
+`mihomo.el` provides Emacs editing support for [Mihomo](https://github.com/MetaCubeX/mihomo) configuration files.
 
 Version 0.5 includes:
 
