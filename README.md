@@ -2,7 +2,7 @@
 
 `mihomo.el` provides Emacs editing support for [Mihomo](https://github.com/MetaCubeX/mihomo) configuration files.
 
-Version 0.2 includes:
+Version 0.3 includes:
 
 - YAML editing through `yaml-mode`;
 - highlighting, key completion, and built-in configuration snippets;
@@ -10,13 +10,16 @@ Version 0.2 includes:
 - an asynchronous external-controller API client with auth-source support;
 - a transient controller menu;
 - proxy group selection and delay tests;
-- active connection inspection and closing.
+- active connection inspection and closing;
+- realtime structured logs and traffic statistics;
+- proxy and rule Provider inspection and updates.
 
 ## Requirements
 
 - Emacs 29.1 or newer;
 - `yaml-mode` 0.0.16 or newer;
 - `transient` 0.8.0 or newer;
+- `websocket` 1.12 or newer;
 - Mihomo in `PATH`, or an explicit `mihomo-executable`, for validation.
 
 Editing and completion continue to work when Mihomo is unavailable.
@@ -69,7 +72,8 @@ Set the controller URL, then run `M-x mihomo`:
 ```
 
 The transient menu provides status, mode changes, configuration reload, proxy
-groups, and active connections. Controller requests are asynchronous.
+groups, active connections, Providers, realtime logs, and realtime traffic.
+Controller requests are asynchronous.
 
 Store the controller secret in auth-source using the controller host and port
 with the user `mihomo`. For example, the equivalent `~/.authinfo.gpg` entry is:
@@ -96,6 +100,32 @@ Do not put the secret in Emacs configuration or customize variables.
 - `k`: close the connection at point;
 - `K`: confirm and close all connections;
 - `g`: refresh.
+
+### Providers
+
+`M-x mihomo-providers` opens proxy and rule Providers in one table:
+
+- `u`: update the Provider at point;
+- `h`: start a health check for a proxy Provider;
+- `g`: refresh both Provider types.
+
+### Realtime logs
+
+`M-x mihomo-logs` opens a structured WebSocket log stream:
+
+- `p`: pause or resume insertion;
+- `c`: clear retained logs;
+- `l`: select the minimum log level and reconnect;
+- `g`: reconnect.
+
+The buffer retains at most `mihomo-log-max-lines` lines. Closing the buffer
+closes its WebSocket.
+
+### Realtime traffic
+
+`M-x mihomo-traffic` shows current upload/download rates and cumulative byte
+counts. It updates from Mihomo once per second. Press `g` to reconnect; closing
+the buffer closes its WebSocket.
 
 ## Validation
 
@@ -141,15 +171,16 @@ Load the package and test file in Emacs, then run the tests matching `^mihomo-`:
 
 ```elisp
 (add-to-list 'load-path "/path/to/mihomo.el")
-(load "/path/to/mihomo.el/test/mihomo-config-mode-test.el" nil t)
+(mapc (lambda (file) (load file nil t))
+      (directory-files "/path/to/mihomo.el/test" t "-test\\.el\\'"))
 (ert-run-tests-interactively "^mihomo-")
 ```
 
 ## Scope
 
-Version 0.2 does not install or launch Mihomo, manage system proxy settings,
-download subscriptions, stream logs or traffic, manage providers, or display
-rules.
+Version 0.3 does not install or launch Mihomo, manage system proxy settings,
+download subscriptions, display rules, render traffic graphs, or manage
+Mihomo processes.
 
 ## License
 

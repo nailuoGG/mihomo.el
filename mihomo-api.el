@@ -4,7 +4,7 @@
 ;; Author: Liu Jiale
 ;; Keywords: tools
 ;; Package-Requires: ((emacs "29.1"))
-;; Version: 0.2.0
+;; Version: 0.3.0
 
 ;;; Commentary:
 ;; Asynchronous client for the Mihomo external-controller REST API.
@@ -167,6 +167,33 @@ successful empty response passes nil for both."
 (defun mihomo-api-close-all-connections (callback)
   "Close all active connections and call CALLBACK."
   (mihomo-api-request "DELETE" "/connections" nil callback))
+
+(defun mihomo-api-proxy-providers (callback)
+  "Fetch proxy providers and call CALLBACK."
+  (mihomo-api-request "GET" "/providers/proxies" nil callback))
+
+(defun mihomo-api-rule-providers (callback)
+  "Fetch rule providers and call CALLBACK."
+  (mihomo-api-request "GET" "/providers/rules" nil callback))
+
+(defun mihomo-api-update-provider (kind name callback)
+  "Update provider NAME of KIND and call CALLBACK.
+KIND must be either `proxy' or `rule'."
+  (unless (memq kind '(proxy rule))
+    (error "Unknown Mihomo provider kind: %s" kind))
+  (mihomo-api-request
+   "PUT"
+   (format "/providers/%s/%s"
+           (if (eq kind 'proxy) "proxies" "rules")
+           (url-hexify-string name))
+   nil callback))
+
+(defun mihomo-api-healthcheck-provider (name callback)
+  "Start a health check for proxy provider NAME and call CALLBACK."
+  (mihomo-api-request
+   "GET"
+   (format "/providers/proxies/%s/healthcheck" (url-hexify-string name))
+   nil callback))
 
 (provide 'mihomo-api)
 ;;; mihomo-api.el ends here

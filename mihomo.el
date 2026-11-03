@@ -4,8 +4,8 @@
 ;; Author: Liu Jiale
 ;; URL: https://github.com/nailuoGG/mihomo.el
 ;; Keywords: convenience, languages, tools
-;; Package-Requires: ((emacs "29.1") (transient "0.8.0") (yaml-mode "0.0.16"))
-;; Version: 0.2.0
+;; Package-Requires: ((emacs "29.1") (transient "0.8.0") (websocket "1.12") (yaml-mode "0.0.16"))
+;; Version: 0.3.0
 
 ;;; Commentary:
 ;; Edit Mihomo configuration files and operate the external controller from
@@ -16,7 +16,9 @@
 (require 'mihomo-api)
 (require 'mihomo-config-mode)
 (require 'mihomo-connections)
+(require 'mihomo-providers)
 (require 'mihomo-proxies)
+(require 'mihomo-realtime)
 (require 'transient)
 
 (defun mihomo--message-result (success error)
@@ -71,9 +73,13 @@
     ("s" "Status" mihomo-status)
     ("m" "Set mode" mihomo-set-mode)
     ("r" "Reload config" mihomo-reload-config)]
-   ["Views"
+   ["Management"
     ("p" "Proxy groups" mihomo-proxies)
-    ("c" "Connections" mihomo-connections)]])
+    ("c" "Connections" mihomo-connections)
+    ("P" "Providers" mihomo-providers)]
+   ["Realtime"
+    ("l" "Logs" mihomo-logs)
+    ("t" "Traffic" mihomo-traffic)]])
 
 (provide 'mihomo)
 ;;; mihomo.el ends here
