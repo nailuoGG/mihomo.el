@@ -56,7 +56,11 @@
     (insert "mode: rule\nrules:\n  - INVALID\n")
     (let ((diagnostics
            (mihomo-flymake--diagnostics
-            (current-buffer) "configuration error: yaml: line 3: bad rule")))
+            (current-buffer)
+            (concat
+             "time=\"2026-11-03T10:31:04+08:00\" level=error "
+             "msg=\"yaml: line 3: bad rule\"\n"
+             "configuration file /tmp/invalid.yaml test failed"))))
       (should (= (length diagnostics) 1))
       (should (= (line-number-at-pos
                   (flymake-diagnostic-beg (car diagnostics)))

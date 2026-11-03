@@ -76,6 +76,26 @@ If the executable is not in `PATH`:
 
 Inspect diagnostics with `M-x flymake-show-buffer-diagnostics`.
 
+## Release verification
+
+The release verifier downloads the pinned Mihomo `v1.19.33` Darwin arm64
+binary, verifies its SHA-256 digest, checks the valid fixture, and confirms that
+Mihomo rejects an intentionally invalid YAML file:
+
+```sh
+./scripts/verify-mihomo.sh
+```
+
+To use an archive that was downloaded separately, pass its path. The same
+pinned SHA-256 check still applies:
+
+```sh
+./scripts/verify-mihomo.sh ~/Downloads/mihomo-darwin-arm64-v1.19.33.gz
+```
+
+The binary is extracted to a private temporary directory and removed when the
+script exits. The script does not install or start Mihomo.
+
 ## Running tests
 
 Load the package and test file in Emacs, then run the tests matching `^mihomo-`:
