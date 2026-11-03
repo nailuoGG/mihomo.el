@@ -1,0 +1,41 @@
+test/mihomo-api-test.el
+  s_93af8e406fd6d6::t_23db7f0a87a890 50-61
+  s_93af8e406fd6d6::t_12e5ac6fab7b33 43-45
+  s_93af8e406fd6d6::t_06ba99d8ad534c 1-42,46-49,62-101
+mihomo.el
+  s_93af8e406fd6d6::t_7e044bbeb79986 1,7-8,11-12,16,18-76
+mihomo-proxies.el
+  s_93af8e406fd6d6::t_1156993744f267 77
+  s_93af8e406fd6d6::t_9900a94370a770 59-60,63-76
+  s_93af8e406fd6d6::t_a60788df169d97 1-58,61-62,78-127
+mihomo-flymake.el
+  s_93af8e406fd6d6::t_6541d49d925453 7
+README.md
+  s_93af8e406fd6d6::t_24c2a7d1e4316a 5,8-13,19,62-99,150-152
+mihomo-api.el
+  s_93af8e406fd6d6::t_bbd5f1f40bc850 16
+  s_93af8e406fd6d6::t_e28e7a4003fe07 94-98,114
+  s_93af8e406fd6d6::t_ae04205a522e69 22-24
+  s_93af8e406fd6d6::t_2a6bb57f0dd944 1-15,17-21,25-93,99-113,115-172
+mihomo-connections.el
+  s_93af8e406fd6d6::t_619d2ebb035ea2 1-14,16-118
+  s_93af8e406fd6d6::t_cec72ea68abb65 15
+mihomo-config-mode.el
+  s_93af8e406fd6d6::t_cc621fc6cc8a9e 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9099445d0091c242ff23ba097fa6571206e1cc2c",
+  "prompts": {},
+  "sessions": {
+    "s_93af8e406fd6d6": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a19f0f-cb13-7610-b6e5-8c8317599c79",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "James L. <nailuogg@gmail.com>"
+    }
+  }
+}
