@@ -1,0 +1,18 @@
+mode: rule
+mixed-port: 7890
+proxies:
+  - name: Example
+    type: ss
+    server: example.com
+    port: 443
+    cipher: aes-128-gcm
+    password: change-me
+proxy-groups:
+  - name: Proxy
+    type: select
+    proxies:
+      - Example
+      - DIRECT
+rules:
+  - DOMAIN-SUFFIX,example.com,Proxy
+  - MATCH,DIRECT
