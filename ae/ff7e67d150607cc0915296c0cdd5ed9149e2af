@@ -1,0 +1,25 @@
+test/mihomo-config-mode-test.el
+  s_93af8e406fd6d6::t_9b1a170d9882f7 59-63
+scripts/verify-mihomo.sh
+  s_93af8e406fd6d6::t_e11801fbaaee08 1-2,4-14,16-20,22-25,43-72
+  s_93af8e406fd6d6::t_07478b04cb650c 21,26-42
+  s_93af8e406fd6d6::t_7423000fae937f 3,15
+README.md
+  s_93af8e406fd6d6::t_93ebbdbae5ac8d 79-98
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "aeff7e67d150607cc0915296c0cdd5ed9149e2af",
+  "prompts": {},
+  "sessions": {
+    "s_93af8e406fd6d6": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a19f0f-cb13-7610-b6e5-8c8317599c79",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "James L. <nailuogg@gmail.com>"
+    }
+  }
+}
