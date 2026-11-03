@@ -4,7 +4,7 @@
 ;; Author: Liu Jiale
 ;; Keywords: tools
 ;; Package-Requires: ((emacs "29.1") (websocket "1.12"))
-;; Version: 0.3.0
+;; Version: 0.4.0
 
 ;;; Commentary:
 ;; Realtime Mihomo log and traffic buffers backed by WebSockets.

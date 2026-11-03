@@ -33,6 +33,35 @@
     (should (equal (car entry) '(rule . "Rules")))
     (should (equal (aref (cadr entry) 5) "42"))))
 
+(ert-deftest mihomo-provider-detail-builds-proxy-node-entries ()
+  (let* ((provider
+          (mihomo-providers-test--json
+           "{\"proxies\":[{\"name\":\"Node A\",\"type\":\"Shadowsocks\",\"alive\":true,\"udp\":true,\"history\":[{\"delay\":80},{\"delay\":42}]}]}"))
+         (entry (car (mihomo-provider-detail--proxy-entries provider))))
+    (should (equal (car entry) "Node A"))
+    (should (equal (append (cadr entry) nil)
+                   '("Node A" "Shadowsocks" "yes" "42" "yes")))))
+
+(ert-deftest mihomo-provider-detail-builds-inline-rule-payload ()
+  (let* ((provider
+          (mihomo-providers-test--json
+           "{\"payload\":[\"DOMAIN,example.com\",\"IP-CIDR,192.0.2.0/24\"]}"))
+         (entries (mihomo-provider-detail--rule-entries provider)))
+    (should (= (length entries) 2))
+    (should (equal (append (cadr (car entries)) nil)
+                   '("0" "DOMAIN,example.com")))))
+
+(ert-deftest mihomo-provider-detail-explains-hidden-rule-payload ()
+  (with-temp-buffer
+    (mihomo-provider-detail-mode)
+    (setq mihomo-provider-detail--kind 'rule
+          mihomo-provider-detail--name "Rules")
+    (mihomo-provider-detail--render
+     (mihomo-providers-test--json
+      "{\"name\":\"Rules\",\"vehicleType\":\"File\",\"ruleCount\":42}"))
+    (should (string-match-p "not exposed" header-line-format))
+    (should-not tabulated-list-entries)))
+
 (ert-deftest mihomo-api-builds-provider-routes ()
   (let (requests)
     (cl-letf (((symbol-function 'mihomo-api--secret) #'ignore)

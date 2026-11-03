@@ -2,7 +2,7 @@
 
 `mihomo.el` provides Emacs editing support for [Mihomo](https://github.com/MetaCubeX/mihomo) configuration files.
 
-Version 0.3 includes:
+Version 0.4 includes:
 
 - YAML editing through `yaml-mode`;
 - highlighting, key completion, and built-in configuration snippets;
@@ -12,7 +12,8 @@ Version 0.3 includes:
 - proxy group selection and delay tests;
 - active connection inspection and closing;
 - realtime structured logs and traffic statistics;
-- proxy and rule Provider inspection and updates.
+- proxy and rule Provider inspection, details, and updates;
+- paginated and filterable active rule browsing.
 
 ## Requirements
 
@@ -72,8 +73,8 @@ Set the controller URL, then run `M-x mihomo`:
 ```
 
 The transient menu provides status, mode changes, configuration reload, proxy
-groups, active connections, Providers, realtime logs, and realtime traffic.
-Controller requests are asynchronous.
+groups, active connections, Providers, active rules, realtime logs, and
+realtime traffic. Controller requests are asynchronous.
 
 Store the controller secret in auth-source using the controller host and port
 with the user `mihomo`. For example, the equivalent `~/.authinfo.gpg` entry is:
@@ -105,9 +106,26 @@ Do not put the secret in Emacs configuration or customize variables.
 
 `M-x mihomo-providers` opens proxy and rule Providers in one table:
 
+- `RET` or `d`: open Provider details;
 - `u`: update the Provider at point;
 - `h`: start a health check for a proxy Provider;
 - `g`: refresh both Provider types.
+
+Proxy Provider details show nodes, type, alive status, latest delay, and UDP
+support. Inline Rule Provider details show their payload. Mihomo does not expose
+the payload of File or HTTP Rule Providers through the controller API, so their
+details show metadata and an explicit notice instead.
+
+### Rules
+
+`M-x mihomo-rules` opens the active rule table:
+
+- `n` / `p`: next or previous page;
+- `f`: filter by rule type, payload, or target;
+- `c`: clear the filter;
+- `g`: refresh.
+
+The page size is controlled by `mihomo-rules-page-size` and defaults to 200.
 
 ### Realtime logs
 
@@ -178,9 +196,10 @@ Load the package and test file in Emacs, then run the tests matching `^mihomo-`:
 
 ## Scope
 
-Version 0.3 does not install or launch Mihomo, manage system proxy settings,
-download subscriptions, display rules, render traffic graphs, or manage
-Mihomo processes.
+Version 0.4 does not install or launch Mihomo, manage system proxy settings,
+download subscriptions, render traffic graphs, edit active rules, expose
+File/HTTP Rule Provider payloads unavailable from Mihomo, or manage Mihomo
+processes.
 
 ## License
 

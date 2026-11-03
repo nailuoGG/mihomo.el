@@ -4,7 +4,7 @@
 ;; Author: Liu Jiale
 ;; Keywords: convenience, languages, tools
 ;; Package-Requires: ((emacs "29.1") (yaml-mode "0.0.16"))
-;; Version: 0.3.0
+;; Version: 0.4.0
 
 ;;; Commentary:
 ;; YAML editing, completion, snippets, and Flymake integration for Mihomo

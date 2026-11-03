@@ -4,7 +4,7 @@
 ;; Author: Liu Jiale
 ;; Keywords: tools
 ;; Package-Requires: ((emacs "29.1"))
-;; Version: 0.3.0
+;; Version: 0.4.0
 
 ;;; Commentary:
 ;; Tabulated proxy group management for the Mihomo controller.

@@ -4,7 +4,7 @@
 ;; Author: Liu Jiale
 ;; Keywords: tools
 ;; Package-Requires: ((emacs "29.1"))
-;; Version: 0.3.0
+;; Version: 0.4.0
 
 ;;; Commentary:
 ;; Asynchronous client for the Mihomo external-controller REST API.
@@ -175,6 +175,16 @@ successful empty response passes nil for both."
 (defun mihomo-api-rule-providers (callback)
   "Fetch rule providers and call CALLBACK."
   (mihomo-api-request "GET" "/providers/rules" nil callback))
+
+(defun mihomo-api-rules (callback)
+  "Fetch active Mihomo rules and call CALLBACK."
+  (mihomo-api-request "GET" "/rules" nil callback))
+
+(defun mihomo-api-proxy-provider (name callback)
+  "Fetch proxy provider NAME and call CALLBACK."
+  (mihomo-api-request
+   "GET" (format "/providers/proxies/%s" (url-hexify-string name))
+   nil callback))
 
 (defun mihomo-api-update-provider (kind name callback)
   "Update provider NAME of KIND and call CALLBACK.
