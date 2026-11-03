@@ -5,7 +5,7 @@
 ;; URL: https://github.com/nailuoGG/mihomo.el
 ;; Keywords: convenience, languages, tools
 ;; Package-Requires: ((emacs "29.1") (transient "0.8.0") (websocket "1.12") (yaml-mode "0.0.16"))
-;; Version: 0.4.0
+;; Version: 0.5.0
 
 ;;; Commentary:
 ;; Edit Mihomo configuration files and operate the external controller from
@@ -18,6 +18,7 @@
 (require 'mihomo-connections)
 (require 'mihomo-providers)
 (require 'mihomo-proxies)
+(require 'mihomo-profiles)
 (require 'mihomo-realtime)
 (require 'mihomo-rules)
 (require 'transient)
@@ -79,6 +80,8 @@
     ("c" "Connections" mihomo-connections)
     ("P" "Providers" mihomo-providers)
     ("R" "Rules" mihomo-rules)]
+   ["Profiles"
+    ("f" "Profiles" mihomo-profiles-ui)]
    ["Realtime"
     ("l" "Logs" mihomo-logs)
     ("t" "Traffic" mihomo-traffic)]])

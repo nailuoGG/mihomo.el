@@ -2,7 +2,7 @@
 
 `mihomo.el` provides Emacs editing support for [Mihomo](https://github.com/MetaCubeX/mihomo) configuration files.
 
-Version 0.4 includes:
+Version 0.5 includes:
 
 - YAML editing through `yaml-mode`;
 - highlighting, key completion, and built-in configuration snippets;
@@ -13,7 +13,8 @@ Version 0.4 includes:
 - active connection inspection and closing;
 - realtime structured logs and traffic statistics;
 - proxy and rule Provider inspection, details, and updates;
-- paginated and filterable active rule browsing.
+- paginated and filterable active rule browsing;
+- local and subscribed configuration profiles with safe updates and switching.
 
 ## Requirements
 
@@ -127,6 +128,35 @@ details show metadata and an explicit notice instead.
 
 The page size is controlled by `mihomo-rules-page-size` and defaults to 200.
 
+### Profiles
+
+`M-x mihomo-profiles-ui` opens the profile table:
+
+- `u`: update a Subscription profile from its URL;
+- `a`: validate and activate the profile on the running controller;
+- `o`: open the profile configuration file;
+- `g`: refresh.
+
+Declare profiles in Emacs configuration:
+
+```elisp
+(setq mihomo-profiles
+      '((:name "Local"
+         :file "~/.config/mihomo/config.yaml")
+        (:name "Subscription"
+         :file "~/.config/mihomo/profiles/sub.yaml"
+         :url "https://example.com/config.yaml")))
+```
+
+Subscribed configurations are downloaded to a temporary file, validated with
+`mihomo -t`, and only then replace the profile file atomically. Invalid or
+oversized downloads never overwrite an existing configuration. Responses larger
+than `mihomo-profile-max-download-size` (default 10 MiB) are rejected. Only
+HTTP and HTTPS subscription URLs are accepted.
+
+Proxy Provider subscriptions are managed through the Providers view instead;
+see `M-x mihomo-providers`.
+
 ### Realtime logs
 
 `M-x mihomo-logs` opens a structured WebSocket log stream:
@@ -196,10 +226,10 @@ Load the package and test file in Emacs, then run the tests matching `^mihomo-`:
 
 ## Scope
 
-Version 0.4 does not install or launch Mihomo, manage system proxy settings,
-download subscriptions, render traffic graphs, edit active rules, expose
-File/HTTP Rule Provider payloads unavailable from Mihomo, or manage Mihomo
-processes.
+Version 0.5 does not install or launch Mihomo, manage system proxy settings,
+edit active rules, expose File/HTTP Rule Provider payloads unavailable from
+Mihomo, automatically activate updated subscriptions, render traffic graphs, or
+manage Mihomo processes.
 
 ## License
 

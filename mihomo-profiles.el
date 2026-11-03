@@ -209,5 +209,97 @@ CALLBACK receives SUCCESS and MESSAGE."
               (setq mihomo-profile-current name)
               (funcall callback t (format "Activated profile %s" name))))))))))
 
+(defun mihomo-profile--entries ()
+  "Return tabulated profile entries."
+  (mapcar
+   (lambda (profile)
+     (let* ((name (plist-get profile :name))
+            (file (plist-get profile :file))
+            (url (plist-get profile :url)))
+       (list name
+             (vector name
+                     (if url "Subscription" "Local")
+                     (abbreviate-file-name file)
+                     (if (file-exists-p file) "present" "missing")
+                     (if (equal name mihomo-profile-current) "*" "")))))
+   (mihomo-profile-list)))
+
+(defun mihomo-profiles-ui-refresh ()
+  "Refresh the Mihomo profile buffer."
+  (interactive)
+  (setq tabulated-list-entries (mihomo-profile--entries))
+  (tabulated-list-print t))
+
+(defun mihomo-profiles-ui--selected ()
+  "Return the profile name at point."
+  (or (tabulated-list-get-id)
+      (user-error "No Mihomo profile on this line")))
+
+(defun mihomo-profiles-ui-update ()
+  "Update the subscription for the profile at point."
+  (interactive)
+  (let* ((name (mihomo-profiles-ui--selected))
+         (profile (mihomo-profile-find name))
+         (buffer (current-buffer)))
+    (mihomo-profile-update
+     profile
+     (lambda (success message-text)
+       (message "Mihomo profile %s: %s" name
+                (if success message-text (concat "failed - " message-text)))
+       (when (and (buffer-live-p buffer) success)
+         (with-current-buffer buffer
+           (mihomo-profiles-ui-refresh)))))))
+
+(defun mihomo-profiles-ui-activate ()
+  "Activate the profile at point on the running controller."
+  (interactive)
+  (let* ((name (mihomo-profiles-ui--selected))
+         (profile (mihomo-profile-find name)))
+    (mihomo-profile-activate
+     profile
+     (lambda (success message-text)
+       (message "Mihomo profile %s: %s" name
+                (if success message-text (concat "failed - " message-text)))))))
+
+(defun mihomo-profiles-ui-open ()
+  "Open the configuration file of the profile at point."
+  (interactive)
+  (let* ((profile (mihomo-profile-find (mihomo-profiles-ui--selected)))
+         (file (plist-get profile :file)))
+    (unless (file-exists-p file)
+      (user-error "Mihomo profile file is missing: %s" file))
+    (find-file file)))
+
+(defvar-keymap mihomo-profiles-ui-mode-map
+  :doc "Keymap for `mihomo-profiles-ui-mode'."
+  :parent tabulated-list-mode-map
+  "u" #'mihomo-profiles-ui-update
+  "a" #'mihomo-profiles-ui-activate
+  "o" #'mihomo-profiles-ui-open
+  "g" #'mihomo-profiles-ui-refresh)
+
+(define-derived-mode mihomo-profiles-ui-mode tabulated-list-mode
+  "Mihomo-Profiles"
+  "Major mode for Mihomo configuration profiles."
+  (setq tabulated-list-format
+        [("Name" 22 t)
+         ("Kind" 12 t)
+         ("File" 45 t)
+         ("Status" 9 t)
+         ("Active" 7 t)]
+        tabulated-list-padding 2
+        tabulated-list-sort-key '("Name" . nil))
+  (tabulated-list-init-header))
+
+;;;###autoload
+(defun mihomo-profiles-ui ()
+  "Display Mihomo configuration profiles."
+  (interactive)
+  (let ((buffer (get-buffer-create "*Mihomo Profiles*")))
+    (with-current-buffer buffer
+      (mihomo-profiles-ui-mode)
+      (mihomo-profiles-ui-refresh))
+    (pop-to-buffer buffer)))
+
 (provide 'mihomo-profiles)
 ;;; mihomo-profiles.el ends here
