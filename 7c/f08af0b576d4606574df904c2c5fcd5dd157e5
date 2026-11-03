@@ -1,0 +1,46 @@
+mihomo-config-mode.el
+  s_93af8e406fd6d6::t_3d5fac4b97f8ec 7
+mihomo.el
+  s_93af8e406fd6d6::t_dc5bb81b0d953a 7-8,19,21,76,78-82
+mihomo-realtime.el
+  s_93af8e406fd6d6::t_8e62781742fcb0 1-13,15-17,19-53,57-251
+  s_93af8e406fd6d6::t_99872952f2d304 14,18
+  s_93af8e406fd6d6::t_98cd8b250d61fe 54-56
+mihomo-proxies.el
+  s_93af8e406fd6d6::t_bd3ad9824b4079 7
+mihomo-connections.el
+  s_93af8e406fd6d6::t_496b6981a32778 7
+README.md
+  s_93af8e406fd6d6::t_8f787a992c2cd7 5,13-15,22,75-76,104-129,174-175,181-183
+test/mihomo-realtime-test.el
+  s_93af8e406fd6d6::t_03b8780a58e206 1-60
+mihomo-api.el
+  s_93af8e406fd6d6::t_fcf72048720a51 171-185,189-197
+  s_93af8e406fd6d6::t_2ae4644e198396 186-188
+  s_93af8e406fd6d6::t_248568db677799 7
+mihomo-providers.el
+  s_93af8e406fd6d6::t_833d668be1a04a 1-22,36-125
+  s_93af8e406fd6d6::t_081e65657ec455 23-35
+test/mihomo-providers-test.el
+  s_93af8e406fd6d6::t_5471b04e7c84c9 46
+  s_93af8e406fd6d6::t_6b35b5c780f878 15-22
+  s_93af8e406fd6d6::t_dfcfda9e9c7109 1-14,23-45,47-54
+mihomo-flymake.el
+  s_93af8e406fd6d6::t_a32f70351d9684 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7cf08af0b576d4606574df904c2c5fcd5dd157e5",
+  "prompts": {},
+  "sessions": {
+    "s_93af8e406fd6d6": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a19f0f-cb13-7610-b6e5-8c8317599c79",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "James L. <nailuogg@gmail.com>"
+    }
+  }
+}
