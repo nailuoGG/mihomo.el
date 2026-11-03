@@ -1,0 +1,51 @@
+mihomo-providers.el
+  s_93af8e406fd6d6::t_d976f37a2607d7 7,95-100,104-105,134-178,181-192,195-243,251-262,265-268,271-275
+  s_93af8e406fd6d6::t_5484c8a79241c1 179-180,193-194,263-264
+  s_93af8e406fd6d6::t_24cf263a4b12b6 269-270
+  s_93af8e406fd6d6::t_d1bb08943d199f 244-250
+  s_93af8e406fd6d6::t_efa8b7b618eac5 14,16
+  s_93af8e406fd6d6::t_99bec603c84123 276-277
+README.md
+  s_93af8e406fd6d6::t_e4b4d042f8bf36 5,15-16,76-77,109,114-129,199-202
+mihomo.el
+  s_93af8e406fd6d6::t_78adbca91ad25a 8,22,80-81
+mihomo-rules.el
+  s_93af8e406fd6d6::t_bc55e28e630117 14
+  s_93af8e406fd6d6::t_5a76ae1e02184c 1-13,15-137,140-153
+  s_93af8e406fd6d6::t_90e0ab59c38ebb 138-139
+test/mihomo-rules-test.el
+  s_93af8e406fd6d6::t_f30c3681360a96 1-30,33-53
+  s_93af8e406fd6d6::t_4caec5d797ff61 31-32
+mihomo-connections.el
+  s_93af8e406fd6d6::t_689386898bf706 7
+mihomo-realtime.el
+  s_93af8e406fd6d6::t_51c01a214b02f7 7
+mihomo-api.el
+  s_93af8e406fd6d6::t_65dd678607bdd6 179-188
+  s_93af8e406fd6d6::t_ae4b924fcc144f 7
+mihomo-config-mode.el
+  s_93af8e406fd6d6::t_8cdb443d71f11c 7
+mihomo-flymake.el
+  s_93af8e406fd6d6::t_4880753269aba9 7
+mihomo-proxies.el
+  s_93af8e406fd6d6::t_46ca0d2dfafc27 7
+test/mihomo-providers-test.el
+  s_93af8e406fd6d6::t_e06cede35abe8b 54-64
+  s_93af8e406fd6d6::t_6b6c2dd437e188 36-53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f052f72ce43c1dcfac968964f9f870035fa6ff17",
+  "prompts": {},
+  "sessions": {
+    "s_93af8e406fd6d6": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a19f0f-cb13-7610-b6e5-8c8317599c79",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "James L. <nailuogg@gmail.com>"
+    }
+  }
+}
