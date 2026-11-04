@@ -1,0 +1,41 @@
+LICENSE
+  s_93af8e406fd6d6::t_4a10bc9f45c422 1-674
+mihomo-flymake.el
+  s_93af8e406fd6d6::t_cf14180c620328 4
+mihomo-providers.el
+  s_93af8e406fd6d6::t_5223f1ff5be62d 4
+mihomo-proxies.el
+  s_93af8e406fd6d6::t_63040f31af199a 4
+mihomo-config-mode.el
+  s_93af8e406fd6d6::t_c033aaa7e0c006 4
+mihomo-connections.el
+  s_93af8e406fd6d6::t_93e4c29081a2a4 4
+mihomo-profiles.el
+  s_93af8e406fd6d6::t_05d7875e1363ef 4
+mihomo-api.el
+  s_93af8e406fd6d6::t_a2b6159921f59f 4
+README.md
+  s_93af8e406fd6d6::t_880b68f4a5d8c2 236
+mihomo.el
+  s_93af8e406fd6d6::t_c72660fe008089 4
+mihomo-realtime.el
+  s_93af8e406fd6d6::t_19c5a9eb2f4613 4
+mihomo-rules.el
+  s_93af8e406fd6d6::t_ec84387dfa3f95 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e6741d4d32c4bfabdb9dc89451ead971cc6a2079",
+  "prompts": {},
+  "sessions": {
+    "s_93af8e406fd6d6": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a19f0f-cb13-7610-b6e5-8c8317599c79",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "James L. <nailuogg@gmail.com>"
+    }
+  }
+}
