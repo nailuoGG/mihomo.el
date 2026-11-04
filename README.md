@@ -233,4 +233,4 @@ manage Mihomo processes.
 
 ## License
 
-MIT
+[GPL-3.0-or-later](LICENSE)

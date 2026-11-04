@@ -1,6 +1,7 @@
 ;;; mihomo.el --- Mihomo configuration and controller tools -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2026 Liu Jiale
+;; SPDX-License-Identifier: GPL-3.0-or-later
 ;; Author: Liu Jiale
 ;; URL: https://github.com/nailuoGG/mihomo.el
 ;; Keywords: convenience, languages, tools

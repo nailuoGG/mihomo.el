@@ -1,6 +1,7 @@
 ;;; mihomo-config-mode.el --- Edit Mihomo configuration files -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2026 Liu Jiale
+;; SPDX-License-Identifier: GPL-3.0-or-later
 ;; Author: Liu Jiale
 ;; Keywords: convenience, languages, tools
 ;; Package-Requires: ((emacs "29.1") (yaml-mode "0.0.16"))

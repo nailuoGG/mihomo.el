@@ -1,6 +1,7 @@
 ;;; mihomo-proxies.el --- Mihomo proxy group interface -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2026 Liu Jiale
+;; SPDX-License-Identifier: GPL-3.0-or-later
 ;; Author: Liu Jiale
 ;; Keywords: tools
 ;; Package-Requires: ((emacs "29.1"))
