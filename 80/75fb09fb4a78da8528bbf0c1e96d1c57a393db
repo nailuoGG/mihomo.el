@@ -1,0 +1,19 @@
+README.md
+  s_93af8e406fd6d6::t_6e86b9848173e0 51-52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8075fb09fb4a78da8528bbf0c1e96d1c57a393db",
+  "prompts": {},
+  "sessions": {
+    "s_93af8e406fd6d6": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a19f0f-cb13-7610-b6e5-8c8317599c79",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "James L. <nailuogg@gmail.com>"
+    }
+  }
+}
